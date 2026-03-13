@@ -1,9 +1,9 @@
 function Header({titulo,descricao}){
     return(
-        <div>
+        <header>
             <h1>{titulo}</h1>
             <p>{descricao}</p>
-        </div>
+        </header>
     )
 }
 
