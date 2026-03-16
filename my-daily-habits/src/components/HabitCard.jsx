@@ -1,31 +1,28 @@
-function HabitCard({ titulo, meta, ativo = true, diasFeitos = 0, categoria = 'Geral' }) {
- const metaAtingida = diasFeitos >= meta
- const metaZero = diasFeitos === 0
+// src/components/HabitCard.jsx
+function HabitCard({ nome, descricao = '', meta, ativo = true, diasFeitos = 0, onRemover }) {
+  const metaAtingida = diasFeitos >= meta
 
- const mensagemZero = metaZero
-    ? 'Você não fez nenhum dia, vamos começar?'
-    : ''
- const mensagemMeta = metaAtingida
-   ? 'Meta da semana atingida!'
-   : `${diasFeitos} de ${meta} dias concluídos`
+  const mensagemMeta = metaAtingida
+    ? '🏆 Meta da semana atingida!'
+    : `${diasFeitos} de ${meta} dias concluídos`
 
- return (
-   <div className="habit-card">
-     <h3>{titulo}</h3>
-     <p>{mensagemMeta}</p>
-     <p>{mensagemZero}</p>
-     <small>Categoria: {categoria}</small>
-     <br/>
+  return (
+    <div className="habit-card">
+      <h3>{nome}</h3>
+      {descricao && <p>{descricao}</p>}
+      <p>{mensagemMeta}</p>
+      <span>{ativo ? '✅ Ativo' : '⏸️ Pausado'}</span>
+      <br />
+      {metaAtingida && <p>⭐ Parabéns! Meta da semana atingida!</p>}
 
-
-     <span>{ativo ? 'Ativo' : 'Pausado'}</span>
-
-     {metaAtingida && (
-       <p>Parabéns! Você manteve a sequência essa semana!</p>
-     )}
-   </div>
- )
+      {/* onRemover: só aparece se o pai passar essa prop */}
+      {onRemover && (
+        <button className="botao-remover" type="button" onClick={onRemover}>
+          Remover <i class="fa-solid fa-trash"></i>
+        </button>
+      )}
+    </div>
+  )
 }
-
 
 export default HabitCard
