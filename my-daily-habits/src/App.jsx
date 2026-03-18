@@ -14,6 +14,19 @@ function App() {
    { id: 4, titulo: 'Hidratação',  meta: 7, ativo: true,  diasFeitos: 6, categoria: 'Saúde' },
  ]
 
+ /*function total(){
+    const [habits] = useState(() => {
+    const stored = localStorage.getItem('my-daily-habits');
+       try {
+      return JSON.parse(stored);
+    } catch {
+      return [];
+    }
+  }
+
+ });
+ */
+
 
  return (
    <div>
